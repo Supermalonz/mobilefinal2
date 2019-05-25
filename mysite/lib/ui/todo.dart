@@ -5,21 +5,22 @@ import 'dart:async';
 
 Future<List<Todo>> fetchTodos(int userid) async {
   final response = await http
-      .get('https://jsonplaceholder.typicode.com/users/$userid/todos');
+      .get('https://jsonplaceholder.typicode.com/todos?userId=$userid');
 
-  List<Todo> todoApi = [];
+  List<Todo> api = [];
 
   if (response.statusCode == 200) {
     var body = json.decode(response.body);
     for (int i = 0; i < body.length; i++) {
       var todo = Todo.fromJson(body[i]);
+      print(todo);
       if (todo.userid == userid) {
-        todoApi.add(todo);
-        print("todo");
+        api.add(todo);
+        
         //for testing if it works or not
       }
     }
-    return todoApi;
+    return api;
   } else {
     throw Exception('Failed to load post !!!');
     print("Failed");
@@ -45,14 +46,15 @@ class Todo {
 }
 
 class TodoPage extends StatelessWidget {
-  final int id;
   TodoPage({Key key, @required this.id}) : super(key: key);
+  final int id;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Todos"),
+        automaticallyImplyLeading: false,
       ),
       body: Container(
         child: Column(
@@ -98,7 +100,7 @@ class TodoPage extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     (values[index].id).toString(),
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 10)),
                   Text(
