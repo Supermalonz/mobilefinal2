@@ -37,14 +37,14 @@ class RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Register"),
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Register"),
       ),
       body: Form(
         key: _formkey,
         child: ListView(
-          padding: const EdgeInsets.fromLTRB(30, 20, 30, 30),
+          padding: const EdgeInsets.fromLTRB(20, 20, 30, 30),
           children: <Widget>[
             TextFormField(
                 decoration: InputDecoration(
@@ -52,7 +52,7 @@ class RegisterPageState extends State<RegisterPage> {
                   hintText: "User ID have to be between 6 to 12",
                   icon: Icon(
                     Icons.account_box,
-                    size: 30,
+                    size: 20,
                     color: Theme.of(context).primaryColorDark,
                   ),
                 ),
@@ -73,7 +73,7 @@ class RegisterPageState extends State<RegisterPage> {
                   hintText: "ex. 'Kavepol Khunsri'",
                   icon: Icon(
                     Icons.account_circle,
-                    size: 30,
+                    size: 20,
                     color: Theme.of(context).primaryColorDark,
                   ),
                 ),
@@ -93,7 +93,7 @@ class RegisterPageState extends State<RegisterPage> {
                   hintText: "Please fill Age Between 10 to 80",
                   icon: Icon(
                     Icons.event_note,
-                    size: 30,
+                    size: 20,
                     color: Theme.of(context).primaryColorDark,
                   ),
                 ),
@@ -114,7 +114,7 @@ class RegisterPageState extends State<RegisterPage> {
                   hintText: "Password must be longer than 6",
                   icon: Icon(
                     Icons.lock,
-                    size: 30,
+                    size: 20,
                     color: Theme.of(context).primaryColorDark,
                   ),
                 ),
@@ -132,7 +132,7 @@ class RegisterPageState extends State<RegisterPage> {
                   hintText: "Password must be the same",
                   icon: Icon(
                     Icons.lock,
-                    size: 30,
+                    size: 20,
                     color: Theme.of(context).primaryColorDark,
                   ),
                 ),
@@ -144,7 +144,6 @@ class RegisterPageState extends State<RegisterPage> {
                     return "Please fill Password as last line";
                   }
                 }),
-            Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 10)),
             RaisedButton(
                 child: Text("Register new account"),
                 onPressed: () async {
@@ -164,7 +163,6 @@ class RegisterPageState extends State<RegisterPage> {
                       }
                     }
                   }
-
                   await isNewUserIn(userData);
                   if (_formkey.currentState.validate()) {
                     if (!this.userIn) {

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:toast/toast.dart';
 import '../database/user.dart';
 import '../utility/current.dart';
-import '../ui/register.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -21,9 +20,9 @@ class LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Login"),
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Login"),
       ),
       body: Form(
         key: _formkey,
@@ -38,6 +37,7 @@ class LoginPageState extends State<LoginPage> {
             TextFormField(
                 decoration: InputDecoration(
                   labelText: "User",
+                  hintText: "User name",
                   icon: Icon(
                     Icons.account_box,
                     size: 30,
@@ -53,6 +53,7 @@ class LoginPageState extends State<LoginPage> {
                 }),
             TextFormField(
                 decoration: InputDecoration(
+                  hintText: "Password",
                   labelText: "Password",
                   icon: Icon(
                     Icons.lock,
@@ -68,7 +69,6 @@ class LoginPageState extends State<LoginPage> {
                     this.howMany += 1;
                   }
                 }),
-            Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 10)),
             RaisedButton(
               child: Text("Login"),
               onPressed: () async {
