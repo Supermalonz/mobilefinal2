@@ -11,20 +11,19 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Home"),
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Home"),
       ),
       body: Container(
         child: ListView(
-          padding: const EdgeInsets.fromLTRB(20, 15, 20, 0),
           children: <Widget>[
             ListTile(
               title: Text('Hello ${CurrentUser.name}'),
               subtitle: Text('this is my quote "${CurrentUser.quote}"'),
             ),
             RaisedButton(
-              child: Text("PROFILE SETUP"),
+              child: Text("PROFILE SETTING"),
               onPressed: () {
                 Navigator.of(context).pushNamed('/profile');
               },
@@ -32,7 +31,7 @@ class HomePageState extends State<HomePage> {
             RaisedButton(
               child: Text("MY FRIENDS"),
               onPressed: () {
-                Navigator.of(context).pushNamed('/friend');
+                Navigator.of(context).pushReplacementNamed('/friend');
               },
             ),
             RaisedButton(

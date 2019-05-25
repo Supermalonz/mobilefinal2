@@ -141,7 +141,7 @@ class RegisterPageState extends State<RegisterPage> {
                 keyboardType: TextInputType.text,
                 validator: (value) {
                   if (value.isEmpty || value != password.text) {
-                    return "Please fill Password as above";
+                    return "Please fill Password as last line";
                   }
                 }),
             Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 10)),
