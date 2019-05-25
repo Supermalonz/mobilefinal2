@@ -38,7 +38,11 @@ class LoginPageState extends State<LoginPage> {
             TextFormField(
                 decoration: InputDecoration(
                   labelText: "User",
-                  icon: Icon(Icons.account_box, size: 30, color: Theme.of(context).primaryColorDark,),
+                  icon: Icon(
+                    Icons.account_box,
+                    size: 30,
+                    color: Theme.of(context).primaryColorDark,
+                  ),
                 ),
                 controller: userid,
                 keyboardType: TextInputType.text,
@@ -50,7 +54,11 @@ class LoginPageState extends State<LoginPage> {
             TextFormField(
                 decoration: InputDecoration(
                   labelText: "Password",
-                  icon: Icon(Icons.lock, size: 30, color: Theme.of(context).primaryColorDark,),
+                  icon: Icon(
+                    Icons.lock,
+                    size: 30,
+                    color: Theme.of(context).primaryColorDark,
+                  ),
                 ),
                 controller: password,
                 obscureText: true,
@@ -85,6 +93,7 @@ class LoginPageState extends State<LoginPage> {
                     }
                   }
                 }
+
                 if (this.howMany != 2) {
                   Toast.show("Please fill out this form", context,
                       duration: Toast.LENGTH_SHORT, gravity: Toast.BOTTOM);

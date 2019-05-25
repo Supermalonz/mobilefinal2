@@ -14,15 +14,15 @@ class FriendPage extends StatefulWidget {
 Future<List<User>> fetchUsers() async {
   final response = await http.get('https://jsonplaceholder.typicode.com/users');
 
-  List<User> userApi = [];
+  List<User> api = [];
 
   if (response.statusCode == 200) {
     var body = json.decode(response.body);
     for (int i = 0; i < body.length; i++) {
       var user = User.fromJson(body[i]);
-      userApi.add(user);
+      api.add(user);
     }
-    return userApi;
+    return api;
   } else {
     throw Exception('Failed to load post');
   }
@@ -120,8 +120,7 @@ class FriendPageState extends State<FriendPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => TodoPage(
-                        id: values[index].id),
+                    builder: (context) => TodoPage(id: values[index].id),
                   ),
                 );
               },

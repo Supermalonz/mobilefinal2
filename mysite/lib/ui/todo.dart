@@ -10,18 +10,19 @@ Future<List<Todo>> fetchTodos(int userid) async {
   List<Todo> todoApi = [];
 
   if (response.statusCode == 200) {
-    // If the call to the server was successful, parse the JSON
     var body = json.decode(response.body);
     for (int i = 0; i < body.length; i++) {
       var todo = Todo.fromJson(body[i]);
       if (todo.userid == userid) {
         todoApi.add(todo);
+        print("todo");
+        //for testing if it works or not
       }
     }
     return todoApi;
   } else {
-    // If that call was not successful, throw an error.
-    throw Exception('Failed to load post');
+    throw Exception('Failed to load post !!!');
+    print("Failed");
   }
 }
 
@@ -44,14 +45,11 @@ class Todo {
 }
 
 class TodoPage extends StatelessWidget {
-  // Declare a field that holds the Todo
   final int id;
-  // In the constructor, require a Todo
   TodoPage({Key key, @required this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Use the Todo to create our UI
     return Scaffold(
       appBar: AppBar(
         title: Text("Todos"),

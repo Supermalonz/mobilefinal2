@@ -50,7 +50,11 @@ class RegisterPageState extends State<RegisterPage> {
                 decoration: InputDecoration(
                   labelText: "User ID",
                   hintText: "User ID have to be between 6 to 12",
-                  icon: Icon(Icons.account_box, size: 30, color: Theme.of(context).primaryColorDark,),
+                  icon: Icon(
+                    Icons.account_box,
+                    size: 30,
+                    color: Theme.of(context).primaryColorDark,
+                  ),
                 ),
                 controller: userid,
                 keyboardType: TextInputType.text,
@@ -67,8 +71,11 @@ class RegisterPageState extends State<RegisterPage> {
                 decoration: InputDecoration(
                   labelText: "Name",
                   hintText: "ex. 'Kavepol Khunsri'",
-                  icon:
-                      Icon(Icons.account_circle, size: 30, color: Theme.of(context).primaryColorDark,),
+                  icon: Icon(
+                    Icons.account_circle,
+                    size: 30,
+                    color: Theme.of(context).primaryColorDark,
+                  ),
                 ),
                 controller: name,
                 keyboardType: TextInputType.text,
@@ -84,7 +91,11 @@ class RegisterPageState extends State<RegisterPage> {
                 decoration: InputDecoration(
                   labelText: "Age",
                   hintText: "Please fill Age Between 10 to 80",
-                  icon: Icon(Icons.event_note, size: 30, color: Theme.of(context).primaryColorDark,),
+                  icon: Icon(
+                    Icons.event_note,
+                    size: 30,
+                    color: Theme.of(context).primaryColorDark,
+                  ),
                 ),
                 controller: age,
                 keyboardType: TextInputType.number,
@@ -101,7 +112,11 @@ class RegisterPageState extends State<RegisterPage> {
                 decoration: InputDecoration(
                   labelText: "Password",
                   hintText: "Password must be longer than 6",
-                  icon: Icon(Icons.lock, size: 30, color: Theme.of(context).primaryColorDark,),
+                  icon: Icon(
+                    Icons.lock,
+                    size: 30,
+                    color: Theme.of(context).primaryColorDark,
+                  ),
                 ),
                 controller: password,
                 obscureText: true,
@@ -115,7 +130,11 @@ class RegisterPageState extends State<RegisterPage> {
                 decoration: InputDecoration(
                   labelText: "Confirm Password",
                   hintText: "Password must be the same",
-                  icon: Icon(Icons.lock, size: 30, color: Theme.of(context).primaryColorDark,),
+                  icon: Icon(
+                    Icons.lock,
+                    size: 30,
+                    color: Theme.of(context).primaryColorDark,
+                  ),
                 ),
                 controller: password2nd,
                 obscureText: true,
@@ -136,7 +155,6 @@ class RegisterPageState extends State<RegisterPage> {
                   userData.name = name.text;
                   userData.age = age.text;
                   userData.password = password.text;
-                  //function to check if user in
                   Future isNewUserIn(User user) async {
                     var userList = await allUser;
                     for (var i = 0; i < userList.length; i++) {
@@ -146,11 +164,9 @@ class RegisterPageState extends State<RegisterPage> {
                       }
                     }
                   }
-                  //call function
+
                   await isNewUserIn(userData);
-                  //validate form
                   if (_formkey.currentState.validate()) {
-                    //if user not exist
                     if (!this.userIn) {
                       userid.text = "";
                       name.text = "";
