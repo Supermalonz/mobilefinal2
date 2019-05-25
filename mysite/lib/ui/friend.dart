@@ -21,8 +21,6 @@ Future<List<User>> fetchUsers() async {
       api.add(user);
     }
     return api;
-  } else {
-    throw Exception('Failed to load post');
   }
 }
 

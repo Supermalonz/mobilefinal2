@@ -2,48 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
-
-Future<List<Todo>> fetchTodos(int userid) async {
-  final response = await http
-      .get('https://jsonplaceholder.typicode.com/todos?userId=$userid');
-
-  List<Todo> api = [];
-
-  if (response.statusCode == 200) {
-    var body = json.decode(response.body);
-    for (int i = 0; i < body.length; i++) {
-      var todo = Todo.fromJson(body[i]);
-      print(todo);
-      if (todo.userid == userid) {
-        api.add(todo);
-        
-        //for testing if it works or not
-      }
-    }
-    return api;
-  } else {
-    throw Exception('Failed to load post !!!');
-  }
-}
-
-class Todo {
-  final int userid;
-  final int id;
-  final String title;
-  final String completed;
-
-  Todo({this.userid, this.id, this.title, this.completed});
-
-  factory Todo.fromJson(Map<String, dynamic> json) {
-    return Todo(
-      userid: json['userId'],
-      id: json['id'],
-      title: json['title'],
-      completed: (json['completed'] ? "Completed" : ""),
-    );
-  }
-}
-
 class TodoPage extends StatelessWidget {
   TodoPage({Key key, @required this.id}) : super(key: key);
   final int id;
@@ -119,6 +77,44 @@ class TodoPage extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+Future<List<Todo>> fetchTodos(int userid) async {
+  final response = await http
+      .get('https://jsonplaceholder.typicode.com/todos?userId=$userid');
+
+  List<Todo> api = [];
+
+  if (response.statusCode == 200) {
+    var body = json.decode(response.body);
+    for (int i = 0; i < body.length; i++) {
+      var todo = Todo.fromJson(body[i]);
+      print(todo);
+      if (todo.userid == userid) {
+        api.add(todo);
+
+        //for testing if it works or not
+      }
+    }
+    return api;
+  }
+}
+
+class Todo {
+  final int userid;
+  final int id;
+  final String title;
+  final String completed;
+
+  Todo({this.userid, this.id, this.title, this.completed});
+
+  factory Todo.fromJson(Map<String, dynamic> json) {
+    return Todo(
+      userid: json['userId'],
+      id: json['id'],
+      title: json['title'],
+      completed: (json['completed'] ? "Completed" : ""),
     );
   }
 }

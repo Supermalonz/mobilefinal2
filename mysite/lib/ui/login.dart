@@ -27,7 +27,7 @@ class LoginPageState extends State<LoginPage> {
       body: Form(
         key: _formkey,
         child: ListView(
-          padding: const EdgeInsets.fromLTRB(30, 15, 30, 0),
+          padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
           children: <Widget>[
             Image.network(
               "https://www.easykeys.com/Images/Keys_Cut/chicago/chicago_1250-1499_cut_key_large.png",
