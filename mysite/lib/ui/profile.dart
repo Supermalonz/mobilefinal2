@@ -37,7 +37,7 @@ class ProfilePageState extends State<ProfilePage> {
 
   bool isUserIn = false;
 
-  bool isNumeric(String i) {
+  bool isNum(String i) {
     if (i == null) {
       return false;
     }
@@ -58,7 +58,7 @@ class ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Profile Setup"),
+          title: Text("Profile Setting"),
         ),
         body: Form(
           key: _formkey,
@@ -78,7 +78,6 @@ class ProfilePageState extends State<ProfilePage> {
                       if (value.isEmpty) {
                         return "Please fill out this form";
                       } else if (isUserIn) {
-                        print("hey");
                         return "This Username is taken";
                       } else if (value.length < 6 || value.length > 12) {
                         return "Please fill UserId wrong";
@@ -112,7 +111,7 @@ class ProfilePageState extends State<ProfilePage> {
                     validator: (value) {
                       if (value.isEmpty) {
                         return "Please fill Age";
-                      } else if (!isNumeric(value) ||
+                      } else if (!isNum(value) ||
                           int.parse(value) < 10 ||
                           int.parse(value) > 80) {
                         return "You fill Age wrong";

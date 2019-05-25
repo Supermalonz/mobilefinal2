@@ -13,9 +13,7 @@ class FriendPage extends StatefulWidget {
 
 Future<List<User>> fetchUsers() async {
   final response = await http.get('https://jsonplaceholder.typicode.com/users');
-
   List<User> api = [];
-
   if (response.statusCode == 200) {
     var body = json.decode(response.body);
     for (int i = 0; i < body.length; i++) {
@@ -70,7 +68,7 @@ class FriendPageState extends State<FriendPage> {
                 switch (snapshot.connectionState) {
                   case ConnectionState.none:
                   case ConnectionState.waiting:
-                    return new Text('loading...');
+                    return new Text('Loading...');
                   default:
                     if (snapshot.hasError) {
                       return new Text('Error: ${snapshot.error}');
@@ -87,10 +85,10 @@ class FriendPageState extends State<FriendPage> {
   }
 
   Widget createListView(BuildContext context, AsyncSnapshot snapshot) {
-    List<User> values = snapshot.data;
+    List<User> shotuser = snapshot.data;
     return new Expanded(
       child: new ListView.builder(
-        itemCount: values.length,
+        itemCount: shotuser.length,
         itemBuilder: (BuildContext context, int index) {
           return new Card(
             child: InkWell(
@@ -98,21 +96,21 @@ class FriendPageState extends State<FriendPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "${(values[index].id).toString()} : ${values[index].name}",
+                    "${(shotuser[index].id).toString()} : ${shotuser[index].name}",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                   ),
-                  Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 10)),
+                  Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 5)),
                   Text(
-                    values[index].email,
-                    style: TextStyle(fontSize: 16),
+                    shotuser[index].email,
+                    style: TextStyle(fontSize: 14),
                   ),
                   Text(
-                    values[index].phone,
-                    style: TextStyle(fontSize: 16),
+                    shotuser[index].phone,
+                    style: TextStyle(fontSize: 14),
                   ),
                   Text(
-                    values[index].website,
-                    style: TextStyle(fontSize: 16),
+                    shotuser[index].website,
+                    style: TextStyle(fontSize: 14),
                   ),
                 ],
               ),
@@ -120,7 +118,7 @@ class FriendPageState extends State<FriendPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => TodoPage(id: values[index].id),
+                    builder: (context) => TodoPage(id: shotuser[index].id),
                   ),
                 );
               },

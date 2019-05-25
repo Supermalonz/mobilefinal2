@@ -23,7 +23,6 @@ Future<List<Todo>> fetchTodos(int userid) async {
     return api;
   } else {
     throw Exception('Failed to load post !!!');
-    print("Failed");
   }
 }
 
@@ -88,10 +87,10 @@ class TodoPage extends StatelessWidget {
   }
 
   Widget createListView(BuildContext context, AsyncSnapshot snapshot) {
-    List<Todo> values = snapshot.data;
+    List<Todo> shotuser = snapshot.data;
     return new Expanded(
       child: new ListView.builder(
-        itemCount: values.length,
+        itemCount: shotuser.length,
         itemBuilder: (BuildContext context, int index) {
           return new Card(
             child: InkWell(
@@ -99,16 +98,16 @@ class TodoPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    (values[index].id).toString(),
+                    (shotuser[index].id).toString(),
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
-                  Padding(padding: EdgeInsets.fromLTRB(0, 15, 0, 10)),
+                  Padding(padding: EdgeInsets.fromLTRB(0, 5, 0, 10)),
                   Text(
-                    values[index].title,
+                    shotuser[index].title,
                     style: TextStyle(fontSize: 16),
                   ),
                   Text(
-                    values[index].completed,
+                    shotuser[index].completed,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
